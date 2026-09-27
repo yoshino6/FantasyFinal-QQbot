@@ -1,0 +1,15 @@
+# 复制为 alemon.config.yaml。这个文件只给 qqbot 使用，不放 MySQL/Redis。
+qq-bot:
+  app_id: "replace-with-qq-app-id"
+  secret: "replace-with-qq-secret"
+  markdownToText: false
+  hideUnsupported: 1
+  sandbox: false
+
+login: "qq-bot"
+# 与同机 server 的 17117 冲突，因此默认使用 17210；跨服务器可改成 17117。
+port: 17210
+
+FantasyFinal:
+  coreApi:
+    serviceToken: "replace-with-shared-core-service-token"

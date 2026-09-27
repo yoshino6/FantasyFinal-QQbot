@@ -1,0 +1,14 @@
+qq-bot:
+  app_id: "102054493"
+  secret: "0OmBa0QrIkCf8c7c8eBiGoNwW6hIuW9n"
+  hideUnsupported: 1
+  markdownToText: false
+  sandbox: false
+
+login: "qq-bot"
+port: 17210
+
+FantasyFinal:
+  coreApi:
+    serviceToken: "ff-4406d25585444ea3a173cdf0442a9829cebf3c354117477b91e69a6b5e911c85"
+
