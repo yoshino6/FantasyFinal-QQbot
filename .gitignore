@@ -5,3 +5,16 @@ logs/
 *.log
 alemon.config.yaml
 alemon.yaml
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.zip
+*.tar
+*.tgz
+*.gz
+*.patch
+服务器配置-QQBot.txt
