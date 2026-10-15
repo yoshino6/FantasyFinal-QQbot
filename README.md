@@ -4,7 +4,17 @@
 
 默认读取项目目录的 `alemon.config.yaml`。原来的 `alemon.yaml` 不再作为默认配置；若 ALX 环境变量还设有 `FANTASYFINAL_QQ_CONFIG` 或 `CFG_PATH` 指向旧文件，请移除该设置，再保存并应用后台配置。
 
-`index.js` 加载本目录已构建的 `lib/qq-gateway/index.js`。如果 `lib/` 缺失，入口会直接提示复制编译产物；不要让 ALX 用原生 Node 直接加载 TypeScript 源码。前台运行选择 `app` 脚本，后台运行使用 `./index.js` 并开启自动重启。配置中的 `login` 固定为 `qq-bot`。
+`index.js` 加载本目录已构建的 `lib/qq-gateway/index.js`。`lib/` 不提交到 Git，所以首次部署和每次拉取源码后，先在 ALX 停止正在运行的 QQBot，再在服务器 QQBot 目录执行：
+
+```bash
+cd /root/alx/workspace/bots/FantasyFinal-QQbot
+node -v
+npm ci --include=dev
+npm run build
+test -f lib/qq-gateway/index.js
+```
+
+构建要求 Node.js 22.18 或更高版本。确认构建成功后，再在 ALX 启动或重启 QQBot。不要让 ALX 用原生 Node 直接加载 TypeScript 源码；ALX 没有构建按钮时，在服务器终端执行上述命令即可。前台运行选择 `app` 脚本，后台运行使用 `./index.js` 并开启自动重启。配置中的 `login` 固定为 `qq-bot`。这些命令不会覆盖 `alemon.config.yaml`。
 
 QQ 进程只加载 `lib/qq-gateway`（源码对应 `src/qq-gateway`），不导入游戏数据库或游戏规则。通过环境变量 `FANTASYFINAL_CORE_URL` 访问 server 的 Core API；Core 令牌优先读取 `FANTASYFINAL_CORE_TOKEN` / `FANTASYFINAL_CORE_SERVICE_TOKEN`，未设置时读取本目录 `alemon.config.yaml` 中的 `FantasyFinal.coreApi.serviceToken`，必须与 server 配置相同。
 
