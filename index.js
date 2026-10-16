@@ -25,7 +25,7 @@ const { start } = await import('alemonjs');
 const compiledEntry = resolve(fantasyFinalRoot, 'lib/qq-gateway/index.js');
 if (!existsSync(compiledEntry)) {
   console.error(`[FantasyFinal qqbot] 未找到编译入口：${compiledEntry}`);
-  console.error('[FantasyFinal qqbot] 请先复制编译后的 lib/qq-gateway，不能直接用 node 加载 src/qq-gateway/index.ts。');
+  console.error('[FantasyFinal qqbot] 请在当前 QQBot 目录执行 npm ci --include=dev 和 npm run build，然后重新启动。');
   process.exit(1);
 }
 start({
